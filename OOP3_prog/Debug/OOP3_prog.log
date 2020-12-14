@@ -1,0 +1,12 @@
+﻿  main.cpp
+  vim_like.cpp
+  Generating Code...
+vim_like.obj : error LNK2019: unresolved external symbol "public: __thiscall MyString::MyString(void)" (??0MyString@@QAE@XZ) referenced in function "public: __thiscall VimModel::VimModel(void)" (??0VimModel@@QAE@XZ)
+vim_like.obj : error LNK2019: unresolved external symbol "public: __thiscall MyString::~MyString(void)" (??1MyString@@QAE@XZ) referenced in function __unwindfunclet$??0VimModel@@QAE@XZ$1
+vim_like.obj : error LNK2019: unresolved external symbol "public: char const * __thiscall MyString::c_str(void)const " (?c_str@MyString@@QBEPBDXZ) referenced in function "public: void __thiscall Window::PutData(class MyString &,int)" (?PutData@Window@@QAEXAAVMyString@@H@Z)
+vim_like.obj : error LNK2019: unresolved external symbol "public: unsigned int __thiscall MyString::length(void)const " (?length@MyString@@QBEIXZ) referenced in function "public: void __thiscall VimModel::SendC(int)" (?SendC@VimModel@@QAEXH@Z)
+vim_like.obj : error LNK2019: unresolved external symbol "public: void __thiscall MyString::clear(void)" (?clear@MyString@@QAEXXZ) referenced in function "public: void __thiscall VimModel::SendC(int)" (?SendC@VimModel@@QAEXH@Z)
+vim_like.obj : error LNK2019: unresolved external symbol "public: void __thiscall MyString::erase(unsigned int,unsigned int)" (?erase@MyString@@QAEXII@Z) referenced in function "public: void __thiscall VimModel::SendC(int)" (?SendC@VimModel@@QAEXH@Z)
+vim_like.obj : error LNK2019: unresolved external symbol "public: void __thiscall MyString::append(unsigned int,char)" (?append@MyString@@QAEXID@Z) referenced in function "public: void __thiscall VimModel::SendC(int)" (?SendC@VimModel@@QAEXH@Z)
+vim_like.obj : error LNK2019: unresolved external symbol "public: void __thiscall MyString::append(char const *)" (?append@MyString@@QAEXPBD@Z) referenced in function "public: void __thiscall VimModel::SendC(int)" (?SendC@VimModel@@QAEXH@Z)
+C:\Users\User\Desktop\Лабы 5 сем\ооп\3\OOP3_prog\Debug\OOP3_prog.exe : fatal error LNK1120: 8 unresolved externals

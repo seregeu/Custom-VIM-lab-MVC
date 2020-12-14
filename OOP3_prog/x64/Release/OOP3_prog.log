@@ -1,0 +1,30 @@
+﻿  main.cpp
+C:\Users\User\Desktop\Лабы 5 сем\ооп\3\OOP3_prog\MyString.h(179,16): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Desktop\Лабы 5 сем\ооп\3\OOP3_prog\MyString.h(181,16): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+  vim_like.cpp
+C:\Users\User\Desktop\Лабы 5 сем\ооп\3\OOP3_prog\MyString.h(179,16): warning C4267: 'argument': conversion from 'size_t' to 'int', possible loss of data
+C:\Users\User\Desktop\Лабы 5 сем\ооп\3\OOP3_prog\MyString.h(181,16): warning C4267: 'argument': conversion from 'size_t' to 'const int', possible loss of data
+main.obj : error LNK2001: unresolved external symbol printw
+main.obj : error LNK2001: unresolved external symbol endwin
+main.obj : error LNK2001: unresolved external symbol noecho
+main.obj : error LNK2001: unresolved external symbol keypad
+main.obj : error LNK2001: unresolved external symbol attroff
+main.obj : error LNK2001: unresolved external symbol start_color
+main.obj : error LNK2001: unresolved external symbol initscr
+main.obj : error LNK2001: unresolved external symbol wgetch
+main.obj : error LNK2001: unresolved external symbol attron
+main.obj : error LNK2001: unresolved external symbol raw
+main.obj : error LNK2001: unresolved external symbol __imp_stdscr
+main.obj : error LNK2001: unresolved external symbol refresh
+vim_like.obj : error LNK2001: unresolved external symbol wrefresh
+vim_like.obj : error LNK2001: unresolved external symbol init_pair
+vim_like.obj : error LNK2001: unresolved external symbol resize_term
+vim_like.obj : error LNK2001: unresolved external symbol "public: __cdecl MyString::~MyString(void)" (??1MyString@@QEAA@XZ)
+vim_like.obj : error LNK2001: unresolved external symbol "public: __cdecl MyString::MyString(void)" (??0MyString@@QEAA@XZ)
+vim_like.obj : error LNK2001: unresolved external symbol newwin
+vim_like.obj : error LNK2001: unresolved external symbol delwin
+vim_like.obj : error LNK2001: unresolved external symbol wbkgd
+vim_like.obj : error LNK2001: unresolved external symbol wprintw
+vim_like.obj : error LNK2001: unresolved external symbol wborder
+vim_like.obj : error LNK2001: unresolved external symbol wclear
+C:\Users\User\Desktop\Лабы 5 сем\ооп\3\OOP3_prog\x64\Release\OOP3_prog.exe : fatal error LNK1120: 23 unresolved externals

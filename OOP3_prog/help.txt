@@ -1,0 +1,30 @@
+                                                        <Command help>
+
+                                                          NAVIGATION
+        '^','0'/'$'  - move cursor to beginning / end of line
+        'b'/'w'      - move cursor to beginning / end of a word to left / right of cursor
+        'gg'('G')    - go to beginning(end) of file
+        'x'          - delete character after cursor
+        'dd'/'div'   - delete current line / word
+        'yy'/'yw'    - copy current line / word
+        'p'          - insert after cursor
+        'NG'         - go to line wiht 'N' number (for example 1...n)
+                                                          COMMANDS
+        'o filename' - open file 'filename'
+        'x'/'wq!'    - write to current file and exit
+        'w'          - write to current file
+        'w filename' - write to 'filename'
+        'q!'         - exit without saving
+        'q'          - exit. if the file has been changed, exit only by 'q!'
+        'number'     - jump to line 'number' (for example: ":15")
+	
+                                                            WRITE
+        'i'          - entering text in front of the cursor
+        'I'/'A'     - go to the beginning / end of the line and start typing
+        'S'          - delete the contents of the line and start typing
+        'r'          - replace one character under the cursor
+                                                            SEARCH
+        '/text<CR>'  - find the string 'text' from cursor to end of file
+        '?text<CR>'  - find the string 'text' from cursor to beginning of file
+        'n'('N')     - repeat search / backward
+         ---------------------------------------------press ESC to exit----------------------------------------------------

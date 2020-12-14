@@ -1,0 +1,50 @@
+﻿  controller.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\wincontypes.h(103,1): warning C4005: 'MOUSE_MOVED': macro redefinition
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\curses.h(160): message : see previous definition of 'MOUSE_MOVED'
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\vim_like.h(19,1): warning C4005: 'TEXT': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winnt.h(611): message : see previous definition of 'TEXT'
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\vim_like.h(25,1): warning C4005: 'DELETE': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winnt.h(8989): message : see previous definition of 'DELETE'
+  main.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\wincontypes.h(103,1): warning C4005: 'MOUSE_MOVED': macro redefinition
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\curses.h(160): message : see previous definition of 'MOUSE_MOVED'
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\vim_like.h(19,1): warning C4005: 'TEXT': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winnt.h(611): message : see previous definition of 'TEXT'
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\vim_like.h(25,1): warning C4005: 'DELETE': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winnt.h(8989): message : see previous definition of 'DELETE'
+  model.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\wincontypes.h(103,1): warning C4005: 'MOUSE_MOVED': macro redefinition
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\curses.h(160): message : see previous definition of 'MOUSE_MOVED'
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\vim_like.h(19,1): warning C4005: 'TEXT': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winnt.h(611): message : see previous definition of 'TEXT'
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\vim_like.h(25,1): warning C4005: 'DELETE': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winnt.h(8989): message : see previous definition of 'DELETE'
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\model.cpp(65,7): warning C4101: 'ch': unreferenced local variable
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\model.cpp(183,16): warning C4018: '>': signed/unsigned mismatch
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\model.cpp(245,19): warning C4018: '>': signed/unsigned mismatch
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\model.cpp(245,61): warning C4018: '>': signed/unsigned mismatch
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\model.cpp(253,27): warning C4018: '>': signed/unsigned mismatch
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\model.cpp(253,69): warning C4018: '<': signed/unsigned mismatch
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\model.cpp(334,26): warning C4018: '<': signed/unsigned mismatch
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\model.cpp(629,22): warning C4018: '>': signed/unsigned mismatch
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\model.cpp(629,66): warning C4018: '>': signed/unsigned mismatch
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\model.cpp(637,30): warning C4018: '>': signed/unsigned mismatch
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\model.cpp(637,74): warning C4018: '<': signed/unsigned mismatch
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\model.cpp(698,29): warning C4018: '<': signed/unsigned mismatch
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\model.cpp(1065,20): warning C4018: '<': signed/unsigned mismatch
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\model.cpp(1067,20): warning C4018: '<': signed/unsigned mismatch
+  view.cpp
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\wincontypes.h(103,1): warning C4005: 'MOUSE_MOVED': macro redefinition
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\curses.h(160): message : see previous definition of 'MOUSE_MOVED'
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\vim_like.h(19,1): warning C4005: 'TEXT': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winnt.h(611): message : see previous definition of 'TEXT'
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\vim_like.h(25,1): warning C4005: 'DELETE': macro redefinition
+C:\Program Files (x86)\Windows Kits\10\Include\10.0.19041.0\um\winnt.h(8989): message : see previous definition of 'DELETE'
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\view.cpp(133,12): warning C4018: '>': signed/unsigned mismatch
+C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\view.cpp(210,24): warning C4018: '<=': signed/unsigned mismatch
+  Generating code
+  291 of 350 functions (83.1%) were compiled, the rest were copied from previous compilation.
+    0 functions were new in current compilation
+    8 functions had inline decision re-evaluated but remain unchanged
+  Finished generating code
+  OOP3_prog.vcxproj -> C:\Users\User\Documents\GitHub\Oop3\OOP3_prog\Release\OOP3_prog.exe
