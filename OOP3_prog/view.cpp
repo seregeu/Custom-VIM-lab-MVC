@@ -2,16 +2,16 @@
 View::View(VimModel* c_model, Controller* c_controller, Target* adapter) {
 	model = c_model;
 	controller = c_controller;
-	adapter = adapter;
+	_adapter = adapter;
 	adapter->AdapterResizeTerm(F_ROWS, F_COLUMNS);
-	text_window = TextWindow(F_ROWS - CONS_H, F_COLUMNS, 0, 0, adapter);
-	cons_window = ConsWindow(CONS_H, F_COLUMNS, F_ROWS - CONS_H, 0, adapter);
-	statusbar = StatusBar(CONS_H, F_COLUMNS, F_ROWS - CONS_H, 0, adapter);
+	text_window = TextWindow(F_ROWS - CONS_H, F_COLUMNS, 0, 0, _adapter);
+	cons_window = ConsWindow(CONS_H, F_COLUMNS, F_ROWS - CONS_H, 0, _adapter);
+	statusbar = StatusBar(CONS_H, F_COLUMNS, F_ROWS - CONS_H, 0, _adapter);
 	model->addObserver(this);
-	c_posy=0;
-	c_posx=0;
-	t_posy=0;
-	t_posx=0;
+	c_posy = 0;
+	c_posx = 0;
+	t_posy = 0;
+	t_posx = 0;
 	scrolled_up = 0;
 }
 void View::Start() {
@@ -26,18 +26,18 @@ void View::Start() {
 void View::Show(const unsigned char window) {
 	switch (window) {
 	case CONS:
-		cons_window.Show();
+		cons_window.Show(_adapter);
 		break;
 	case TEXT:
-		text_window.Show();
-		statusbar.Show();
+		text_window.Show(_adapter);
+		statusbar.Show(_adapter);
 		break;
 	case WSER:
-		text_window.Show();
-		cons_window.Show();
+		text_window.Show(_adapter);
+		cons_window.Show(_adapter);
 		break;
 	case SEAR:
-		statusbar.Show();
+		statusbar.Show(_adapter);
 	default:
 		break;
 	}
@@ -72,7 +72,7 @@ void View::MoveCU() {
 }
 
 
-int View::ScrollDown(MyString& content,const size_t n_len) {
+int View::ScrollDown(MyString& content, const size_t n_len) {
 	size_t ind = n_len / F_COLUMNS + 1;
 	size_t sav = ind;
 	size_t pr_ind = text_window.GetStart();
@@ -92,17 +92,17 @@ int View::ScrollDown(MyString& content,const size_t n_len) {
 	controller->UpScrollFlag(TRUE);
 	return sav;
 }
-int View::ScrollUp(MyString& content, const size_t n_len,const size_t offset) {
+int View::ScrollUp(MyString& content, const size_t n_len, const size_t offset) {
 	int ind = -t_posy;
 	size_t sav = ind;
-	size_t pr_ind = text_window.GetStart()-1;
-	if (n_len==1) {
+	size_t pr_ind = text_window.GetStart() - 1;
+	if (n_len == 1) {
 		text_window.SetStart(pr_ind);
 		return 1;
 	}
 	size_t temp = 0;
 	size_t new_ind = 0;
-	for (new_ind = pr_ind; ind >0; new_ind--) {
+	for (new_ind = pr_ind; ind > 0; new_ind--) {
 		temp++;
 		if (content[new_ind] == '\n') {
 			ind--;
@@ -113,9 +113,9 @@ int View::ScrollUp(MyString& content, const size_t n_len,const size_t offset) {
 		}
 	}
 	new_ind++;
-	while (content[new_ind - 1] != '\n' && new_ind != 0){
+	while (content[new_ind - 1] != '\n' && new_ind != 0) {
 		new_ind--;
-	} 
+	}
 	text_window.SetStart(new_ind);
 	scrolled_up += sav;
 	if (scrolled_up >= F_ROWS) {
@@ -124,7 +124,7 @@ int View::ScrollUp(MyString& content, const size_t n_len,const size_t offset) {
 	return sav;
 }
 
-void View::MoveTU(const int str_index, const size_t r_len, const size_t offset, const size_t n_len,const int str_n) {
+void View::MoveTU(const int str_index, const size_t r_len, const size_t offset, const size_t n_len, const int str_n) {
 	int h_n = 0;
 	h_n += r_len / F_COLUMNS;  //begin of this word;
 	h_n += n_len / F_COLUMNS;
@@ -183,12 +183,12 @@ void View::MoveTL() {
 	}
 }
 
-void View::UpdateCom(MyString& content, const int symb, const int str_index,const unsigned char win) {
-	if (content.length() == 1 && (symb == ':'|| symb == '?' || symb == '/')) {
+void View::UpdateCom(MyString& content, const int symb, const int str_index, const unsigned char win) {
+	if (content.length() == 1 && (symb == ':' || symb == '?' || symb == '/')) {
 		c_posx = 0;
 		c_posy = F_ROWS - CONS_H;
 	}
-	cons_window.PutData(content);
+	cons_window.PutData(content,_adapter);
 	Show(win);
 	switch (symb) {
 	case KEY_LEFT:
@@ -214,21 +214,18 @@ void View::UpdateCom(MyString& content, const int symb, const int str_index,cons
 		break;
 	case ENTER:
 		if (win != WSER) {
-			if (content.length() != 0) {
-				content.clear(); 
-			}
 			c_posy = 0;
 			c_posx = 0;
 		}
 		break;
 	default:
-		if ((c_posx < F_COLUMNS && c_posy < F_ROWS)&&(content.length() > 1)) {
+		if ((c_posx < F_COLUMNS && c_posy < F_ROWS) && (content.length() > 1)) {
 			MoveCR();
 		}
 		break;
 	}
-	if (!(symb==ENTER&&win==WSER))
-	move(c_posy, c_posx);
+	if (!(symb == ENTER && win == WSER))
+		move(c_posy, c_posx);
 	Show(TEXT);
 }
 
@@ -242,8 +239,8 @@ void View::BackToText() {
 	Show(TEXT);
 }
 void View::SetNewStart(const size_t index) {
-	t_posx=0;
-	t_posy=0;
+	t_posx = 0;
+	t_posy = 0;
 	move(t_posy, t_posx);
 	text_window.SetStart(index);
 	Show(TEXT);
@@ -251,8 +248,8 @@ void View::SetNewStart(const size_t index) {
 	controller->UpScrollFlag(FALSE);
 }
 
-void View::UpdateText(MyString& content, const int symb, const int str_index, const size_t offset, const size_t r_len, const size_t n_len,const size_t string_num) {
-	text_window.PutData(content);
+void View::UpdateText(MyString& content, const int symb, const int str_index, const size_t offset, const size_t r_len, const size_t n_len, const size_t string_num) {
+	text_window.PutData(content, _adapter);
 	Show(TEXT);
 	switch (symb) {
 	case KEY_LEFT:
@@ -282,7 +279,7 @@ void View::UpdateText(MyString& content, const int symb, const int str_index, co
 	}
 	if (t_posy >= F_ROWS - CONS_H) {
 		t_posy -= ScrollDown(content, n_len);
-		text_window.PutData(content);
+		text_window.PutData(content, _adapter);
 		Show(TEXT);
 	}
 	if (t_posy < 0) {
@@ -293,7 +290,7 @@ void View::UpdateText(MyString& content, const int symb, const int str_index, co
 		else {
 			t_posy += n_len / F_COLUMNS;
 		}
-		text_window.PutData(content);
+		text_window.PutData(content, _adapter);
 		Show(TEXT);
 	}
 	//moving cursor
@@ -305,8 +302,8 @@ Window::Window() {
 	window = nullptr;
 }
 
-void ConsWindow::PutData(MyString& content) {
-	wclear(window);
+void ConsWindow::PutData(MyString& content, Target* adapter) {
+	adapter->AdapterWclear(window);
 	mvwprintw(window, 0, 0, "%s", content.c_str());
 }
 
@@ -327,19 +324,19 @@ size_t TextWindow::GetStart() {
 	return text_out_strt;
 }
 
-void TextWindow::Show() {
-	wrefresh(window);
+void TextWindow::Show(Target* adapter) {
+	adapter->AdapterWrefresh(window);
 }
 
 void TextWindow::Refresh() {
-	start_ind=0;
-	c_y=0;
-	c_x=0;
-	text_out_strt=0;
+	start_ind = 0;
+	c_y = 0;
+	c_x = 0;
+	text_out_strt = 0;
 }
 
-void TextWindow::PutData(MyString& content) {
-	wclear(window);
+void TextWindow::PutData(MyString& content,Target* adapter) {
+	adapter->AdapterWclear(window);
 	c_y = 0;
 	c_x = 0;
 	size_t i = text_out_strt;
@@ -358,7 +355,7 @@ void TextWindow::PutData(MyString& content) {
 	}
 }
 
-TextWindow::TextWindow(const int height, const int width, const int starty, const int startx,Target* adapter) {
+TextWindow::TextWindow(const int height, const int width, const int starty, const int startx, Target* adapter) {
 	c_x = 0;
 	c_y = 0;
 	start_ind = 0;
@@ -375,15 +372,15 @@ TextWindow::TextWindow() {
 }
 
 ConsWindow::ConsWindow(const int height, const int width, const int starty, const int startx, Target* adapter) {
-	window = CreateNewWin(height, width, starty, startx,adapter);
+	window = CreateNewWin(height, width, starty, startx, adapter);
 	wrefresh(window);
 }
 
 ConsWindow::ConsWindow() {
 }
 
-void ConsWindow::Show() {
-	wrefresh(window);
+void ConsWindow::Show(Target* adapter) {
+	adapter->AdapterWrefresh(window);
 }
 
 StatusBar::StatusBar() {
@@ -401,27 +398,27 @@ StatusBar::StatusBar(const int height, const int width, const int starty, const 
 	wrefresh(N_string);
 }
 
-void View::UpdateStat(MyString& filename,size_t cur_str, size_t str_am) {
-	statusbar.PutData(filename,cur_str, str_am);
+void View::UpdateStat(MyString& filename, size_t cur_str, size_t str_am) {
+	statusbar.PutData(filename, cur_str, str_am,_adapter);
 }
 
-void View::UpdateMode(Mode&mode) {
-	statusbar.PutMode(mode);
+void View::UpdateMode(Mode& mode) {
+	statusbar.PutMode(mode, _adapter);
 }
 
-void StatusBar::Show() {
-	wrefresh(window);
-	wrefresh(filename);
-	wrefresh(N_string);
+void StatusBar::Show(Target* adapter) {
+	adapter->AdapterWrefresh(window);
+	adapter->AdapterWrefresh(filename);
+	adapter->AdapterWrefresh(N_string);
 }
-void StatusBar::PutData(MyString& file_name,const size_t cur_str, const size_t str_am) {
-	wclear(N_string);
-	wclear(filename);
+void StatusBar::PutData(MyString& file_name, const size_t cur_str, const size_t str_am, Target* adapter) {
+	adapter->AdapterWclear(N_string);
+	adapter->AdapterWclear(filename);
 	mvwprintw(N_string, 0, 0, " %d / %d ", cur_str, str_am);
 	mvwprintw(filename, 0, 0, " %s ", file_name.c_str());
 }
-void StatusBar::PutMode(Mode& mode) {
-	wclear(window);
+void StatusBar::PutMode(Mode& mode,Target* adapter) {
+	adapter->AdapterWclear(window);
 	switch (mode) {
 	case Mode::NAVI:
 		mvwprintw(window, 0, 0, " MODE: NAVIGATION ");
@@ -436,8 +433,8 @@ void StatusBar::PutMode(Mode& mode) {
 		mvwprintw(window, 0, 0, " MODE: WRITE ");
 		break;
 	case Mode::HELP:
-		wclear(N_string);
-		wclear(filename);
+		adapter->AdapterWclear(N_string);
+		adapter->AdapterWclear(filename);
 		break;
 	}
 }

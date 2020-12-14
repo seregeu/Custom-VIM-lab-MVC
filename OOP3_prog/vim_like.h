@@ -172,7 +172,7 @@ protected:
 public:
 	Window();
 	~Window() {};
-	virtual void Show()=0;
+	virtual void Show(Target* adapter)=0;
 	WINDOW* CreateNewWin(const int height, const int width, const int starty, const int startx,Target* adapter);
 };
 
@@ -186,8 +186,8 @@ public:
 	TextWindow();
 	TextWindow(const int height, const int width, const int starty, const int startx, Target* adapter);
 	~TextWindow() {};
-	void Show();
-	void PutData(MyString& content);
+	void Show(Target* adapter);
+	void PutData(MyString& content, Target* adapter);
 	size_t GetStart();
 	void SetStart(const size_t new_start_ind);
 	void Refresh();
@@ -200,8 +200,8 @@ public:
 	ConsWindow();
 	ConsWindow(const int height, const int width, const int starty, const int startx, Target* adapter);
 	~ConsWindow() {};
-	void PutData(MyString& content);
-	void Show();
+	void PutData(MyString& content, Target* adapter);
+	void Show(Target* adapter);
 };
 
 class StatusBar : public Window {
@@ -212,9 +212,9 @@ public:
 	StatusBar();
 	StatusBar(const int height, const int width, const int starty, const int startx, Target* adapter);
 	~StatusBar(){};
-	void Show();
-	void PutData(MyString& filename, const size_t cur_str, const size_t str_am);
-	void PutMode(Mode& mode);
+	void Show(Target* adapter);
+	void PutData(MyString& filename, const size_t cur_str, const size_t str_am,Target* adapter);
+	void PutMode(Mode& mode,Target* adapter);
 };
 
 class View :public Observer {
@@ -254,7 +254,7 @@ private:
 	int t_posy;
 	int t_posx;
 	size_t scrolled_up;
-	Target* adapter;
+	Target* _adapter;
 };
 
 //here controller
